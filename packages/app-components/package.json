@@ -1,0 +1,18 @@
+{
+  "name": "@monorepo-demo/app-components",
+  "version": "0.0.0",
+  "description": "this is app with components",
+  "main": "src/index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "../../node_modules/.bin/webpack-dev-server",
+    "build": "webpack --config webpack.config.js",
+    "stats": "$npm_package_config_bin/webpack --config webpack.config.js --json > stats.json"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-component-lazy-load": "^1.0.7",
+    "react-dom": "^16.13.1"
+  }
+}
