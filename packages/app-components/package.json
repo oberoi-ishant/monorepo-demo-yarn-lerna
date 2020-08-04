@@ -10,6 +10,11 @@
     "build": "webpack --config webpack.config.js",
     "stats": "$npm_package_config_bin/webpack --config webpack.config.js --json > stats.json"
   },
+  "repository": {
+    "url": "https://github.com/oberoi-ishant/monorepo-demo-yarn-lerna.git",
+    "type": "git",
+    "directory": "packages/app-components"
+  },
   "dependencies": {
     "react": "^16.13.1",
     "react-component-lazy-load": "^1.0.7",
