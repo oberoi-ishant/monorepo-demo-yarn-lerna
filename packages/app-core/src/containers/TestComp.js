@@ -65,16 +65,12 @@ export default class TestComp extends React.Component {
   render () {
     return (
       <div class="comp-test-core">
-        <h2 class="heading-secondary">Component: App Core</h2>
+        <h2 class="heading-secondary">Dark: Quotes</h2>
         <p class="text u-margin-bottom-medium">
-          Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit. Integer et tempus orci. Cras diam magna, l
-          acinia vel posuere quis, bibendum vitae lorem.
-          Vestibulum ultricies odio nibh, non viverra mauris
-          laoreet id. Morbi nec sapien nec elit euismod auctor
-          ut eu justo. Nulla eros velit, euismod sed velit vel,
-          pretium consectetur ipsum. Interdum et malesuada fames
-          ac ante ipsum primis in faucibus.
+          "There are things out there that our little minds will never comprehend" – H.G. Tannhaus
+        </p>
+        <p class="text u-margin-bottom-medium">
+          "If I now change my past, I will change who I am right now" — The Stranger
         </p>
         <div class="comp-test-core__btns">
           <a
@@ -84,12 +80,12 @@ export default class TestComp extends React.Component {
                 componentName: 'MyPage',
                 props: {
                   name: 'MyPageComponent',
-                  parent: 'App Core'
+                  parent: 'HBO'
               }})
             }>
-            Load MyPage
+            Get More
           </a>
-          <a class="btn btn--green" href="#" onClick={ (e) => this.unloadAppOrComponent(e, 'MyPage') }>UnMount MyPage</a>
+          <a class="btn btn--green" href="#" onClick={ (e) => this.unloadAppOrComponent(e, 'MyPage') }>I'm done</a>
         </div>
         <section class="subapp u-margin-medium" id="MyPage"></section>
       </div>
