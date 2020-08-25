@@ -10,8 +10,6 @@ const exportedComponents = {
   'TestComponent': TestComponent
 };
 
-// ReactDOM.render(<AppContainer />, appDOMElement);
-
 function mountFn ({ element, componentName, appName, props }) {
   console.log(element, appName, componentName);
   appDOMElement = element;
@@ -34,3 +32,7 @@ export {
   mountFn,
   unMountFn,
 }
+
+
+
+// ReactDOM.render(<AppContainer />, appDOMElement);
