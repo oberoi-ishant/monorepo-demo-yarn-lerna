@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"--------------------------- Running Test script: app-components ----------------------\" && exit 0",
     "start": "../../node_modules/.bin/webpack-dev-server",
     "build": "webpack --config webpack.config.js",
     "stats": "$npm_package_config_bin/webpack --config webpack.config.js --json > stats.json"
