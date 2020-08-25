@@ -16,7 +16,7 @@ class TestComponent extends React.Component {
   render () {
     return (
       <div>
-        <div>Component One</div>
+        <div>Component ONE</div>
         <div>{ this.myFunc() }</div>
       </div>
     );
