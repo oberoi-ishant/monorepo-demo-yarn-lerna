@@ -30,7 +30,7 @@ export default class TestComp extends React.Component {
           appName,
           props
         });
-        element.scrollIntoView({behavior: "smooth"});
+        element.scrollIntoView({ behavior: "smooth" });
     });
   }
 
@@ -56,7 +56,10 @@ export default class TestComp extends React.Component {
     if (this.appOrComponentRef) {
       this.appOrComponentRef.unMountFn(elem);
     }
-    document.getElementById('app').scrollIntoView({behavior: "smooth"});
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   render () {
