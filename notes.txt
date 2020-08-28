@@ -171,8 +171,6 @@ Then you can have a step that will read the latest tag
 lerna publish from-git --yes
 
 
-
-
 Local Development with Multiple Contributors
 Anytime a new contributor does a git clone of your project or you
 need to pull your team’s latest changes you have
