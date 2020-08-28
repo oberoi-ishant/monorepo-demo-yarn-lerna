@@ -4,14 +4,14 @@ import TestComponent from './TestComponent';
 import MyPage from './MyPage';
 import AppContainer from './AppContainer';
 
-let appDOMElement = document.getElementById('app-components'); // DOM element
+let appDOMElement;
+
 const exportedComponents = {
   'MyPage': MyPage,
   'TestComponent': TestComponent
 };
 
 function mountFn ({ element, componentName, appName, props }) {
-  console.log(element, appName, componentName);
   appDOMElement = element;
   if (componentName) {
     ReactDOM.render(
@@ -32,7 +32,3 @@ export {
   mountFn,
   unMountFn,
 }
-
-
-
-// ReactDOM.render(<AppContainer />, appDOMElement);

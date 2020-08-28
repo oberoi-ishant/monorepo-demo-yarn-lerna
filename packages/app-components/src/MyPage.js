@@ -1,6 +1,18 @@
 import React from 'react';
+import Utils from '@monorepo-demo/app-utils';
+
+console.log('Utils', Utils.currencyFormat);
 
 class MyPage extends React.Component {
+
+  getSubscriptionAmount () {
+    return Utils.currencyFormat({
+      number: 99,
+      format: 'en-IN',
+      currency: 'INR'
+    });
+  }
+
   render () {
     return (
       <div>
@@ -18,6 +30,9 @@ class MyPage extends React.Component {
         </p>
         <p class="text u-margin-bottom-medium">
         "Never forget what you are. The rest of the world will not. Wear it like armour, and it can never be used to hurt you" - Tyrion Lannister
+        </p>
+        <p class="subscription">
+          Subscribe: { this.getSubscriptionAmount() } / year
         </p>
       </div>
     );

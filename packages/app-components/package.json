@@ -16,6 +16,7 @@
     "directory": "packages/app-components"
   },
   "dependencies": {
+    "@monorepo-demo/app-utils": "^0.0.0",
     "react": "^16.13.1",
     "react-component-lazy-load": "^1.0.7",
     "react-dom": "^16.13.1"

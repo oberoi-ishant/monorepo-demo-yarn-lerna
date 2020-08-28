@@ -34,22 +34,6 @@ export default class TestComp extends React.Component {
     });
   }
 
-  // loadAppOrComponent1({ componentName, appName, props }) {
-  //   import('@monorepo-demo/app-components')
-  //     .then(module => {
-  //       this.appOrComponentRef = module;
-  //       const element = componentName
-  //         ? this.getElement({ elemName: componentName })
-  //         : this.getElement({ elemName: appName });
-  //       this.appOrComponentRef.mountFn({
-  //         element,
-  //         componentName,
-  //         appName,
-  //         props
-  //       });
-  //   });
-  // }
-
   unloadAppOrComponent(e, name) {
     e.preventDefault();
     const elem = this.getElement({elemName: name});
@@ -65,7 +49,7 @@ export default class TestComp extends React.Component {
   render () {
     return (
       <div class="comp-test-core">
-        <h2 class="heading-secondary">Dark: Quotes</h2>
+        <h2 class="heading-secondary">Famous Quotes</h2>
         <p class="text u-margin-bottom-medium">
           "There are things out there that our little minds will never comprehend" – H.G. Tannhaus
         </p>
