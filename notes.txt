@@ -1,8 +1,6 @@
 Steps:
-Thanks to https://medium.com/@jsilvax/a-workflow-guide-for-lerna-with-yarn-workspaces-60f97481149d
-
 1. yarn config set workspaces-experimental true
-2.  mkdir my-design-system && cd my-design-system
+2. mkdir app-core && cd app-components
 3. yarn init
 4. yarn add lerna --dev
 initialize Lerna,
@@ -30,10 +28,9 @@ Setting private to true will prevent the root project from being published to NP
   ]
 }
 
-
-Flow for Creating a New Package
+Creating a New Package
 1. cd packages
-2. mkdir my-design-system-form && cd my-design-system-form
+2. mkdir app-utils && cd app-utils
 3. then we create a new package.json by running yarn init:
 yarn init
 
@@ -43,7 +40,7 @@ because once we do our first publish using Lerna,
 it’ll be published at 0.1.0 or 1.0.0.
 // package.json
 {
-  "name": "@my-scope-name/my-design-system-form",
+  "name": "@my-scope-name/app-utils",
   "version" : "0.0.0",
   "main" : "index.js"
 }
@@ -55,30 +52,30 @@ you can add the following to your module’s individual package.json
 }
 
 Adding a Local Sibling Dependency to a Specific Package
-my-design-system/
+app/
     packages/
-        my-design-system-core/
-        my-design-system-form/
-        my-design-system-button/
-If we wanted to add the my-design-system-button as a dependency
-to our my-design-system-form and have Lerna symlink them,
+        app-core/
+        app-components/
+        app-utils/
+If we wanted to add the app-component as a dependency
+to our app-core and have Lerna symlink them,
 we can do so by cd into that package
 
-cd my-design-system-form
-lerna add @my-scope-name/design-system-button --scope=@my-scope-name/my-design-system-form
+cd app-core
+lerna add @my-scope-name/app-components --scope=@my-scope-name/app-core
 
-This will update the package.json of @my-scope-name/my-design-system-form.
+This will update the package.json of @my-scope-name/app-core.
 // package.json
 {
-  "name": "@my-scope-name/my-design-system-form",
+  "name": "@my-scope-name/app-core",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "@my-scope-name/my-design-system-button": "^1.0.0"
+    "@my-scope-name/app-components": "^1.0.0"
   }
 }
 Now you can reference this local dependency in index.js like
-import Button from '@my-scope-name/my-design-system-button';
+import Button from '@my-scope-name/app-components';
 
 Adding a “common” dependency to ALL packages
 Doing this is similar to the previous command.
@@ -102,28 +99,16 @@ If there’s a dependency that all packages use but that you want
 to remove, Lerna has the exec command that runs an arbitrary
 command in each package. With this knowledge,
 we can use exec to remove a dependency on all packages.
-
 lerna exec -- yarn remove dep-name
-
 
 
 Running Tests
 Lerna provides the run command which will
 run an npm script in each package that contains that script.
-For instance, say all of our packages follow the structure of my-design-system-form:
-my-design-system-form/
-    __tests__/
-        Form.test.js
-and in each package.json we have the test npm script
-"name": "@my-scope-name/my-design-system-form",
-"scripts": {
-    "test": "jest"
-}
 
 Then Lerna can execute each test script by running:
 lerna run test --stream
 *The — stream flag just provides output from the child processes
-
 
 
 Publishing to NPM
@@ -169,47 +154,3 @@ Then follow the prompts to update the individual version numbers.
 Then you can have a step that will read the latest tag
 (that was manually updated) to publish to NPM:
 lerna publish from-git --yes
-
-
-Local Development with Multiple Contributors
-Anytime a new contributor does a git clone of your project or you
-need to pull your team’s latest changes you have
-to run the yarn command:
-yarn
-
-In most Lerna tutorials, it is advocated to use the
-lerna bootstrap command, however when yarn workspaces
-is enabled this is unecessary and redundant.
-
-
-
-
-
-Cross Project Local Development
-In our example, we are building a multi-package design system.
-If a developer wanted to create a new component in the design
-system but also test it out in a local client application before
-it’s published, they can do so by using yarn’s link command.
-To symlink a local dependency
-Say we want to use our local my-design-system-core in my-client-app
-
-cd ~/path/to/my-design-system/my-design-system-core
-yarn link
-
-Now if symlink is success
-cd ~/path/to/my-client-app
-yarn link @my-scope-name/my-design-system-core
-
-Any changes in /packages/my-design-system-core will be reflected
-in my-client-app.
-Now a developer can easily do local development on
-both projects and see it reflected.
-
-To unlink a local dependency
-CD into the package we want to unlink
-cd ~/path/to/my-design-system/my-design-system-core
-yarn unlink
-
-cd ~/path/to/my-client-app
-yarn unlink @my-scope-name/my-design-system-core
-

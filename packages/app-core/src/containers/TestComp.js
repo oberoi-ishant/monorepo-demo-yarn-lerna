@@ -64,7 +64,7 @@ export default class TestComp extends React.Component {
                 componentName: 'MyPage',
                 props: {
                   name: 'MyPageComponent',
-                  parent: 'HBO'
+                  parent: 'Quotes Mantra'
               }})
             }>
             Get More
