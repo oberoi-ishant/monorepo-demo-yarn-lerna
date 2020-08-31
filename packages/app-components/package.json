@@ -1,6 +1,6 @@
 {
   "name": "@monorepo-demo/app-components",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "this is app with components",
   "main": "src/index.js",
   "license": "MIT",
